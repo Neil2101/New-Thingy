@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr6fo4b2gdr3w"]
+[gd_scene load_steps=5 format=3 uid="uid://dr6fo4b2gdr3w"]
 
-[ext_resource type="Texture2D" uid="uid://oi863ay3n8l3" path="res://pixil-frame-0_2.png" id="1_albhj"]
-[ext_resource type="Script" path="res://Characters/player_char.cs" id="1_tcpo5"]
+[ext_resource type="Script" path="res://Characters/playerchar.cs" id="1_yfiht"]
+[ext_resource type="Texture2D" uid="uid://oi863ay3n8l3" path="res://Assets/pixil-frame-0_2.png" id="2_bvjqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx3ya"]
-size = Vector2(44, 44)
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhcb"]
+size = Vector2(6, 0.5)
 
 [node name="PlayerChar" type="CharacterBody2D"]
-position = Vector2(1, 93)
-script = ExtResource("1_tcpo5")
+script = ExtResource("1_yfiht")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4.3125, 4.3125)
-texture = ExtResource("1_albhj")
+texture = ExtResource("2_bvjqa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gx3ya")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5.25)
+shape = SubResource("RectangleShape2D_hyhcb")
+
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
