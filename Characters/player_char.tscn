@@ -1,13 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr6fo4b2gdr3w"]
+[gd_scene load_steps=7 format=3 uid="uid://dr6fo4b2gdr3w"]
 
 [ext_resource type="Script" path="res://Characters/player_char.cs" id="1_426sw"]
 [ext_resource type="Texture2D" uid="uid://bnw67wtgutrds" path="res://Assets/CharacterSheet1.png" id="2_rp6qs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx3ya"]
-size = Vector2(8, 9)
+size = Vector2(10, 9.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyhcb"]
-size = Vector2(6, 0.5)
+[sub_resource type="Animation" id="Animation_rlc65"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_wyvln"]
 resource_name = "player_Animation"
@@ -24,21 +36,6 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_rlc65"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khycd"]
 _data = {
 "RESET": SubResource("Animation_rlc65"),
@@ -52,16 +49,13 @@ script = ExtResource("1_426sw")
 texture = ExtResource("2_rp6qs")
 hframes = 3
 vframes = 3
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_gx3ya")
 
 [node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 5.25)
-shape = SubResource("RectangleShape2D_hyhcb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
