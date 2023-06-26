@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2uohpls2iur8"]
+
+[ext_resource type="Texture2D" uid="uid://cm0uleyd42st3" path="res://Assets/pixil-frame-0.png" id="1_u7bdq"]
+
+[node name="Grassy-Slime" type="Sprite2D"]
+position = Vector2(-7, -32)
+texture = ExtResource("1_u7bdq")
