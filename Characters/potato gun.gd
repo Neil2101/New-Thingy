@@ -1,11 +1,5 @@
-extends Sprite2D
+"""
+What are you doing here, digging around? Don't be surprised when you find what you don't want to find, hear what you don't want to hear.
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+-Ominous message by dev Mintysharky, known as Neil in the comments where he is very frustrated and angry and wants to go punch a walll
+"""

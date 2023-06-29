@@ -35,7 +35,64 @@ public partial class player_char : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
-		//animation stuff
-		//someone else do it -Neil
+		processAnim();
+	}
+	//for the animation
+	//main bug is that left up does not work properly -Neil
+	public  void processAnim(){
+		bool moveJump = Input.IsKeyPressed(Key.Space);
+		bool moveLeft = Input.IsKeyPressed(Key.A); 
+		bool moveRight = Input.IsKeyPressed(Key.D);
+		int DirY;
+		int DirX;
+		Console.WriteLine(moveJump+"|"+moveLeft+"|"+moveRight);
+		if (Input.IsKeyPressed(Key.D)){
+			DirX = 1;
+		}
+		else if (Input.IsKeyPressed(Key.A)){
+			DirX = -1;
+
+		}
+		else{
+			DirX = 0;
+		}
+		if (Input.IsKeyPressed(Key.Space)){
+			DirY = 1;
+		}
+		else{
+			DirY = 0;
+		}
+		if (DirX != 0 || DirY != 0){
+			if (DirX == 1){
+				if (DirY == 1){
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("upper corner");
+				}
+				else{
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("right");
+				}
+			}
+			if (DirX == -1){
+				if (DirY == 1){
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("upper corner");
+				}
+				else{
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
+					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("right");
+				}
+			}
+			else{
+				if (DirY == 1){
+						GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+						GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("up");
+					}
+				}
+			}
+		else{
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
+		}
 	}
 }

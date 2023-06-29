@@ -1,67 +1,101 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr6fo4b2gdr3w"]
+[gd_scene load_steps=13 format=3 uid="uid://dr6fo4b2gdr3w"]
 
 [ext_resource type="Script" path="res://Characters/player_char.cs" id="1_426sw"]
 [ext_resource type="Texture2D" uid="uid://bnw67wtgutrds" path="res://Assets/CharacterSheet1.png" id="2_rp6qs"]
-[ext_resource type="Texture2D" uid="uid://da8eokm7ians3" path="res://Assets/ground_detector_debug.png" id="3_a5k8j"]
+[ext_resource type="Texture2D" uid="uid://bdnqh5gx8ry0f" path="res://Assets/cannon.png" id="3_u5nig"]
 [ext_resource type="Script" path="res://Characters/PotatoCannon.cs" id="4_rrqd8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx3ya"]
-size = Vector2(8, 9)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mesk7"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(34, 34, 17, 17)
 
-[sub_resource type="Animation" id="Animation_rlc65"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_uifyk"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(17, 34, 17, 17)
 
-[sub_resource type="Animation" id="Animation_wyvln"]
-resource_name = "player_Animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_msrxj"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(17, 17, 17, 17)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_khycd"]
-_data = {
-"RESET": SubResource("Animation_rlc65"),
-"player_Animation": SubResource("Animation_wyvln")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkpy5"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(34, 17, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx5sl"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtv4g"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jp1i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mesk7")
+}],
+"loop": true,
+"name": &"bottom corner",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uifyk")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msrxj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkpy5")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx5sl")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtv4g")
+}],
+"loop": true,
+"name": &"upper corner",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_als40"]
+radius = 7.0
 
 [node name="PlayerChar" type="CharacterBody2D"]
 script = ExtResource("1_426sw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rp6qs")
-hframes = 3
-vframes = 3
-
-[node name="PotatoCannon" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("3_a5k8j")
-offset = Vector2(15, 0)
-script = ExtResource("4_rrqd8")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1jp1i")
+animation = &"upper corner"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_gx3ya")
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_als40")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_khycd")
-}
+[node name="PotatoCannon" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_u5nig")
+offset = Vector2(21.6667, 0)
+script = ExtResource("4_rrqd8")

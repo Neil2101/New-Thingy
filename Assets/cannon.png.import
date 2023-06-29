@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx1e3csv63y8e"
-path="res://.godot/imported/testFloorCorner2.png-3ab27c9e70f7359245a09e732e32a83f.ctex"
+uid="uid://bdnqh5gx8ry0f"
+path="res://.godot/imported/cannon.png-9d2b3e012890521845b77f0f6cf9b14e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/testFloorCorner2.png"
-dest_files=["res://.godot/imported/testFloorCorner2.png-3ab27c9e70f7359245a09e732e32a83f.ctex"]
+source_file="res://Assets/cannon.png"
+dest_files=["res://.godot/imported/cannon.png-9d2b3e012890521845b77f0f6cf9b14e.ctex"]
 
 [params]
 
