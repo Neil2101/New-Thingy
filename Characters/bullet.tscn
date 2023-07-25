@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3w6cc24x02lw"]
+
+[ext_resource type="Script" path="res://Characters/bullet.cs" id="1_egjkb"]
+[ext_resource type="Texture2D" uid="uid://bb235s2lrtubs" path="res://Assets/tater.png" id="1_yscwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfexc"]
+size = Vector2(6, 3)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_egjkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+texture = ExtResource("1_yscwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qfexc")
+
+[node name="DespawnTimer" type="Timer" parent="."]

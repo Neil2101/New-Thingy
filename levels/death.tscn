@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpi188myyukd3"]
+
+[ext_resource type="Script" path="res://levels/death.cs" id="1_lug36"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_lug36")
+
+[node name="Start" type="Button" parent="."]
+offset_left = -276.0
+offset_top = 35.0
+offset_right = 279.0
+offset_bottom = 84.0
+text = "Restart"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Quit" type="Button" parent="."]
+offset_left = -277.0
+offset_top = 117.0
+offset_right = 278.0
+offset_bottom = 166.0
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -394.0
+offset_top = -263.0
+offset_right = 392.0
+offset_bottom = -122.0
+theme_override_font_sizes/font_size = 101
+text = "you died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

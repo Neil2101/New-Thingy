@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr6fo4b2gdr3w"]
+[gd_scene load_steps=15 format=3 uid="uid://dr6fo4b2gdr3w"]
 
 [ext_resource type="Script" path="res://Characters/player_char.cs" id="1_426sw"]
 [ext_resource type="Texture2D" uid="uid://bnw67wtgutrds" path="res://Assets/CharacterSheet1.png" id="2_rp6qs"]
@@ -8,6 +8,14 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_mesk7"]
 atlas = ExtResource("2_rp6qs")
 region = Rect2(34, 34, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6v0x"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaxks"]
+atlas = ExtResource("2_rp6qs")
+region = Rect2(17, 17, 17, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uifyk"]
 atlas = ExtResource("2_rp6qs")
@@ -37,6 +45,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"bottom corner",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6v0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaxks")
+}],
+"loop": true,
+"name": &"damage",
 "speed": 5.0
 }, {
 "frames": [{
@@ -86,16 +105,19 @@ radius = 7.0
 [node name="PlayerChar" type="CharacterBody2D"]
 script = ExtResource("1_426sw")
 
+[node name="PotatoCannon" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_u5nig")
+offset = Vector2(26.666, -1.5)
+script = ExtResource("4_rrqd8")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jp1i")
-animation = &"upper corner"
+animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_als40")
 
-[node name="PotatoCannon" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_u5nig")
-offset = Vector2(21.6667, 0)
-script = ExtResource("4_rrqd8")
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true

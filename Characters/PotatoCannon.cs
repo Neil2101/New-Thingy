@@ -3,26 +3,20 @@ using System;
 
 public partial class PotatoCannon : Sprite2D
 {
-//	Node playerchar = GetParent().GetParent(); // playerchar is the PlayerChar node
-	Vector2 cannonxy;
-	
-	public Vector2 anglexy(float angle)
-	{
-		float x = (float) Math.Cos(angle);
-		float y = (float) Math.Sin(angle);
-		Vector2 result = new Vector2(x, y);
-		return result;
-	}
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		LookAt(GetGlobalMousePosition());
-		if (Input.IsActionPressed("shoot"))
-		{
-			cannonxy = anglexy(RotationDegrees);
-			GD.Print(RotationDegrees);
-			GD.Print(cannonxy.X);
-			GD.Print(cannonxy.Y);
-		}
-	}
+    public override void _PhysicsProcess(double delta){
+        LookAt(GetGlobalMousePosition());
+        RotationDegrees = Math.Abs(RotationDegrees);
+		if(RotationDegrees%360>=90.0 && RotationDegrees%360<=270.0){
+            FlipV = true;
+        }
+        else{
+            FlipV = false;
+        }
+        if(Input.IsActionPressed("shoot")){
+            GD.Print("You've been shot!");
+            bullet boolet = new bullet(); // Create a new Sprite2D.
+            AddChild(boolet);
+            boolet.fire();
+        }
+    }
 }
