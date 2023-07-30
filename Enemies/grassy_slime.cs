@@ -12,6 +12,8 @@ public partial class grassy_slime : CharacterBody2D
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public int speed = 30;
 	public int attack_cooldown = 2;
+	public int health = 3;
+	public Timer dmgtimer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -51,6 +53,11 @@ public partial class grassy_slime : CharacterBody2D
 		if(body is player_char){
 			player_char player = body as player_char;
 			player.takedamage();
+		}
+	}
+	public void checkhealth(){
+		if (health <= 0){
+			this.QueueFree();
 		}
 	}
 }

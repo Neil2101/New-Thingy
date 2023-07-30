@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 //Only problem is arrow movement... -Neil
 // ^ FIXED -astro
 
@@ -13,9 +14,10 @@ public partial class player_char : CharacterBody2D
 	public int DirY;
 	public int DirX;
 	public Timer dmgtimer;
+	
 	public bool TimerStartedAtLeastOnce = false;
 	public bool takendamage = false;
-
+	public ArrayList bulletArr = new ArrayList();
     public override void _Ready()
     {
         dmgtimer = GetNode<Timer>("DamageTimer");
@@ -55,11 +57,6 @@ public partial class player_char : CharacterBody2D
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			}
 			processMovementAnim();
-		}
-		if(Input.IsActionJustPressed("shoot")){
-			bullet Bullet = new bullet();
-			AddChild(Bullet);
-			Bullet.fire();
 		}
 		Velocity = velocity;
 		MoveAndSlide();
@@ -139,7 +136,7 @@ public partial class player_char : CharacterBody2D
 	}
 	public void checkhealth(){
 		if (health <= 0){
-			GetTree().ChangeSceneToFile("death.tscn");
+			GetTree().ChangeSceneToFile("levels/death.tscn");
 		}
 	}
 	public void checktimer(){

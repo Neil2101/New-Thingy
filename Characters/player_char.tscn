@@ -111,6 +111,8 @@ texture = ExtResource("3_u5nig")
 offset = Vector2(26.666, -1.5)
 script = ExtResource("4_rrqd8")
 
+[node name="CannonCooldown" type="Timer" parent="PotatoCannon"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jp1i")
 animation = &"damage"
