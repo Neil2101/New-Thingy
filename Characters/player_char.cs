@@ -18,12 +18,12 @@ public partial class player_char : CharacterBody2D
 	public bool TimerStartedAtLeastOnce = false;
 	public bool takendamage = false;
 	public ArrayList bulletArr = new ArrayList();
-    public override void _Ready()
-    {
-        dmgtimer = GetNode<Timer>("DamageTimer");
+	public override void _Ready()
+	{
+		dmgtimer = GetNode<Timer>("DamageTimer");
 		dmgtimer.Autostart = false;
-    }
-    
+	}
+	
 	public override void _PhysicsProcess(double delta)
 	{	
 		checktimer();
