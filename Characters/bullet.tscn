@@ -22,4 +22,7 @@ shape = SubResource("RectangleShape2D_qfexc")
 wait_time = 5.0
 autostart = true
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("..")
+
 [connection signal="timeout" from="DespawnTimer" to="." method="delete"]

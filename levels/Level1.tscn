@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx764h0mna5ek"]
 
 [ext_resource type="PackedScene" uid="uid://dr6fo4b2gdr3w" path="res://Characters/player_char.tscn" id="1_uhpnq"]
-[ext_resource type="PackedScene" uid="uid://gj42xcvsffo3" path="res://LevelMaker/tile_map.tscn" id="2_2u8wk"]
+[ext_resource type="PackedScene" uid="uid://gj42xcvsffo3" path="res://LevelMaker/tile_map_LVL1.tscn" id="2_2u8wk"]
 [ext_resource type="PackedScene" uid="uid://2uohpls2iur8" path="res://Enemies/grassy_slime.tscn" id="3_8h326"]
 
 [node name="Node" type="Node"]

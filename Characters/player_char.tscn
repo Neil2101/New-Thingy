@@ -103,6 +103,7 @@ animations = [{
 radius = 7.0
 
 [node name="PlayerChar" type="CharacterBody2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_426sw")
 
 [node name="PotatoCannon" type="Sprite2D" parent="."]

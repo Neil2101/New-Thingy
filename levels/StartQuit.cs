@@ -15,10 +15,10 @@ public partial class StartQuit : Node
 	//what the button does
 	private void buttonstart()
 	{
-    	GetTree().ChangeSceneToFile("levels/Level1.tscn");
+		GetTree().ChangeSceneToFile("levels/Level1.tscn");
 	}
 	private void buttonquit()
 	{
-    	GetTree().Quit();
+		GetTree().Quit();
 	}
 }
