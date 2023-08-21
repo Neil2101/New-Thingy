@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class bullet : CharacterBody2D
+public partial class bullet : RigidBody2D
 {
 	float speed = 30f;
 	int damage = 1;
